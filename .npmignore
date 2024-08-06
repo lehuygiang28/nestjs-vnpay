@@ -1,0 +1,13 @@
+.vscode
+.github
+node_modules/
+src/
+coverage/
+
+*.md
+!README.md
+
+biome.json
+jest.config.ts
+package-lock.json
+tsconfig.json

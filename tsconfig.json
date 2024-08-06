@@ -1,0 +1,11 @@
+{
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "extends": "@tsconfig/recommended/tsconfig.json",
+    "compilerOptions": {
+        "declaration": true,
+        "outDir": "./lib",
+        "experimentalDecorators": true
+    },
+    "include": ["src"],
+    "exclude": ["node_modules"]
+}
