@@ -39,7 +39,8 @@
     "author": "lehuygiang28 <lehuygiang28@gmail.com>",
     "license": "MIT",
     "peerDependencies": {
-        "@nestjs/common": "^8.0.0 || ^9.0.0 || ^10.0.0"
+        "@nestjs/common": "^8.0.0 || ^9.0.0 || ^10.0.0",
+        "vnpay": "^1.5.4"
     },
     "devDependencies": {
         "@biomejs/biome": "^1.8.3",
@@ -53,8 +54,5 @@
         "ts-jest": "^29.2.3",
         "ts-node": "^10.9.2",
         "typescript": "^5.5.4"
-    },
-    "dependencies": {
-        "vnpay": "^1.5.4"
     }
 }
