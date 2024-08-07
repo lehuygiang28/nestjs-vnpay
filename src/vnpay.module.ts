@@ -13,17 +13,15 @@ export class VnpayModule {
     static register(options: VnpayModuleOptions): DynamicModule {
         return {
             module: VnpayModule,
-            providers: [{ provide: VNPAY_MODULE_OPTIONS, useValue: options || {} }, VnpayService],
+            providers: [{ provide: VNPAY_MODULE_OPTIONS, useValue: options }, VnpayService],
             exports: [VnpayService],
         };
     }
 
     static registerAsync(options: VnpayModuleAsyncOptions): DynamicModule {
-        const allImports = [...new Set([...(options?.imports || [])])];
-
         return {
             module: VnpayModule,
-            imports: allImports,
+            imports: options?.imports,
             providers: [
                 ...VnpayModule.createAsyncProviders(options),
                 ...(options?.extraProviders ?? []),
@@ -60,7 +58,7 @@ export class VnpayModule {
             provide: VNPAY_MODULE_OPTIONS,
             useFactory: async (optionsFactory: VnpayModuleOptionsFactory) =>
                 optionsFactory.createVnpayOptions(),
-            inject: [options?.useExisting || options?.useClass] as any[],
+            inject: [options?.useExisting || options?.useClass] as any,
         };
     }
 }
