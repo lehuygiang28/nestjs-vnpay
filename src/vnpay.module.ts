@@ -5,7 +5,6 @@ import { VNPAY_MODULE_OPTIONS } from './vnpay.constant';
 import { VnpayService } from './vnpay.service';
 
 @Module({})
-// biome-ignore lint/complexity/noStaticOnlyClass: use for register module
 export class VnpayModule {
     static register(options: VnpayModuleOptions): DynamicModule {
         return {
