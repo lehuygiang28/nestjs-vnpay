@@ -24,10 +24,20 @@ import { VNPAY_MODULE_OPTIONS } from './vnpay.constant';
 
 @Injectable()
 export class VnpayService {
-    private readonly vnpayInstance: VNPay;
+    private readonly vnpay: VNPay;
 
     constructor(@Inject(VNPAY_MODULE_OPTIONS) private readonly options: VnpayModuleOptions) {
-        this.vnpayInstance = new VNPay(this.options);
+        this.vnpay = new VNPay(this.options);
+    }
+
+    /**
+     * Sử dụng trực tiếp vnpay instance
+     *
+     * @en Get raw vnpay instance
+     * @returns {VNPay} The raw vnpay instance
+     */
+    public get instance(): VNPay {
+        return this.vnpay;
     }
 
     /**
@@ -36,7 +46,7 @@ export class VnpayService {
      * @returns {Promise<Bank[]>} List of banks
      */
     async getBankList(): Promise<Bank[]> {
-        return this.vnpayInstance.getBankList();
+        return this.vnpay.getBankList();
     }
 
     /**
@@ -49,7 +59,7 @@ export class VnpayService {
      * @see https://sandbox.vnpayment.vn/apis/docs/thanh-toan-pay/pay.html#tao-url-thanh-toan
      */
     buildPaymentUrl(data: BuildPaymentUrl, options?: BuildPaymentUrlOptions): string {
-        return this.vnpayInstance.buildPaymentUrl(data, options);
+        return this.vnpay.buildPaymentUrl(data, options);
     }
 
     /**
@@ -65,7 +75,7 @@ export class VnpayService {
         data: ReturnQueryFromVNPay,
         options?: VerifyReturnUrlOptions,
     ): Promise<VerifyReturnUrl> {
-        return this.vnpayInstance.verifyReturnUrl(data, options);
+        return this.vnpay.verifyReturnUrl(data, options);
     }
 
     /**
@@ -90,7 +100,7 @@ export class VnpayService {
         data: ReturnQueryFromVNPay,
         options?: VerifyIpnCallOptions,
     ): Promise<VerifyIpnCall> {
-        return this.vnpayInstance.verifyIpnCall(data, options);
+        return this.vnpay.verifyIpnCall(data, options);
     }
 
     /**
@@ -104,7 +114,7 @@ export class VnpayService {
      * @see https://sandbox.vnpayment.vn/apis/docs/truy-van-hoan-tien/querydr&refund.html#truy-van-ket-qua-thanh-toan-PAY
      */
     async queryDr(data: QueryDr, options?: QueryDrOptions): Promise<QueryDrResponse> {
-        return this.vnpayInstance.queryDr(data, options);
+        return this.vnpay.queryDr(data, options);
     }
 
     /**
@@ -117,6 +127,6 @@ export class VnpayService {
      * @see https://sandbox.vnpayment.vn/apis/docs/truy-van-hoan-tien/querydr&refund.html#hoan-tien-thanh-toan-PAY
      */
     async refund(data: Refund, options?: RefundOptions) {
-        return this.vnpayInstance.refund(data, options);
+        return this.vnpay.refund(data, options);
     }
 }
