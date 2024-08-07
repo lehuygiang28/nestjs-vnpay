@@ -15,39 +15,39 @@
     <a href="https://www.npmjs.com/package/nestjs-vnpay" target="_blank"><img src="https://img.shields.io/npm/d18m/nestjs-vnpay" alt="NPM Downloads"></a>
 </p>
 
-<strong>VNPay utilities module based on the [vnpay](https://www.npmjs.com/package/vnpay) package</strong>
+**VNPay utilities module based on the [vnpay](https://www.npmjs.com/package/vnpay) package**
 
-## Tài liệu
+## Documentation
 
-### Tài liệu của thư viện: [vnpay.js.org](https://vnpay.js.org/)
+### Library documentation: [vnpay.js.org](https://vnpay.js.org/)
 
-### Tài liệu từ VNPay: [sandbox.vnpayment.vn/apis](https://sandbox.vnpayment.vn/apis)
+### Documentation from VNPay: [sandbox.vnpayment.vn/apis](https://sandbox.vnpayment.vn/apis)
 
-## Cài đặt
+## Installation
 
-Cài đặt `nestjs-vnpay` với `npm`:
+Install `nestjs-vnpay` with `npm`:
 
 ```bash
 $ npm install nestjs-vnpay vnpay
 ```
 
-Cài đặt `nestjs-vnpay` với `yarn`:
+Install `nestjs-vnpay` with `yarn`:
 
 ```bash
 $ yarn add nestjs-vnpay vnpay
 ```
 
-Cài đặt `nestjs-vnpay` với `pnpm`:
+Install `nestjs-vnpay` with `pnpm`:
 
 ```bash
 $ pnpm install nestjs-vnpay vnpay
 ```
 
-## Sử dụng
+## Usage
 
-### Khởi tạo VnpayModule
+### Registration in module
 
-- Khởi tạo đồng bộ:
+- Synchronous registration:
 
 ```ts filename="src/app.module.ts"
 import { Module } from '@nestjs/common';
@@ -63,23 +63,23 @@ import { AppService } from './app.service';
         tmnCode: 'YOUR_TMN_CODE',
         secureSecret: 'YOUR_SECURE_SECRET',
         vnpayHost: 'https://sandbox.vnpayment.vn',
-        testMode: true, // tùy chọn, ghi đè vnpayHost thành sandbox nếu là true
-        hashAlgorithm: 'SHA512', // tùy chọn
+        testMode: true, // optional, overrides vnpayHost to sandbox if true
+        hashAlgorithm: 'SHA512', // optional
 
         /**
-         * Sử dụng enableLog để bật/tắt logger
-         * Nếu enableLog là false, loggerFn sẽ không được sử dụng trong bất kỳ phương thức nào
+         * Use enableLog to enable/disable logger
+         * If enableLog is false, loggerFn will not be used in any method
          */
-        enableLog: true, // tùy chọn
+        enableLog: true, // optional
 
         /**
-         * Hàm `loggerFn` sẽ được gọi để ghi log
-         * Mặc định, loggerFn sẽ ghi log ra console
-         * Bạn có thể ghi đè loggerFn để ghi log ra nơi khác
+         * The `loggerFn` function will be called to log
+         * By default, loggerFn will log to the console
+         * You can override loggerFn to log to another place
          *
-         * `ignoreLogger` là một hàm không làm gì cả
+         * `ignoreLogger` is a function that does nothing
          */
-        loggerFn: ignoreLogger, // tùy chọn
+        loggerFn: ignoreLogger, // optional
     })
   ],
   controllers: [AppController],
@@ -88,7 +88,7 @@ import { AppService } from './app.service';
 export class AppModule {}
 ```
 
-- Hoặc khởi tạo bất đồng bộ, ví dụ sử dụng `ConfigService`:
+- Or asynchronous registration, for example using `ConfigService`:
 
 ```ts filename="src/app.module.ts"
 import { Module } from '@nestjs/common';
@@ -120,7 +120,7 @@ import { AppService } from './app.service';
 export class AppModule {}
 ```
 
-### Sử dụng trong service
+### Use in service
 
 ```ts filename="src/app.service.ts"
 import { Injectable } from '@nestjs/common';
@@ -138,10 +138,10 @@ export class AppService {
 }
 ```
 
-## 🙌 Đóng góp
+## 🙌 Contribution
 
-Các đóng góp luôn được đón nhận! Hãy tạo một issue hoặc pull request nếu bạn có bất kỳ đề xuất, cải thiện hoặc câu hỏi nào.
+Contributions are always welcome! Please create an issue or pull request if you have any suggestions, improvements, or questions.
 
-## Giấy phép
+## License
 
 **[MIT](LICENSE) © [Lê Huy Giang](https://github.com/lehuygiang28)**
