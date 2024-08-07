@@ -4,7 +4,8 @@
     "compilerOptions": {
         "declaration": true,
         "outDir": "./lib",
-        "experimentalDecorators": true
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true
     },
     "include": ["src"],
     "exclude": ["node_modules"]
