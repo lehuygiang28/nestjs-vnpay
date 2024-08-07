@@ -13,7 +13,7 @@ export class VnpayModule {
     static register(options: VnpayModuleOptions): DynamicModule {
         return {
             module: VnpayModule,
-            providers: [{ provide: VNPAY_MODULE_OPTIONS, useValue: options || {} }],
+            providers: [{ provide: VNPAY_MODULE_OPTIONS, useValue: options || {} }, VnpayService],
             exports: [VnpayService],
         };
     }
@@ -27,6 +27,7 @@ export class VnpayModule {
             providers: [
                 ...VnpayModule.createAsyncProviders(options),
                 ...(options?.extraProviders ?? []),
+                VnpayService,
             ],
             exports: [VnpayService],
         };
