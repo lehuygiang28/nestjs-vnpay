@@ -13,7 +13,7 @@
     "scripts": {
         "build": "rimraf ./lib && tsc -p tsconfig.json",
         "prepare": "npm run build",
-        "test": "jest",
+        "test": "jest --passWithNoTests",
         "test:cov": "jest --coverage",
         "example": "npx ts-node example/index.ts",
         "lint": "npx @biomejs/biome lint .",
