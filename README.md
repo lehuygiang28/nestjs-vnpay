@@ -40,10 +40,15 @@ $ pnpm install nestjs-vnpay vnpay
 
 #### Khởi tạo trong module
 
+- Khởi tạo đồng bộ:
+
 ```ts filename="src/app.module.ts"
 import { Module } from '@nestjs/common';
 import { VnpayModule } from 'nestjs-vnpay';
 import { ignoreLogger } from 'vnpay';
+
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 
 @Module({
   imports: [
@@ -70,7 +75,40 @@ import { ignoreLogger } from 'vnpay';
         loggerFn: ignoreLogger, // tùy chọn
     })
   ],
-  controllers: [],
+  controllers: [AppController],
+  providers: [AppService],
+})
+export class AppModule {}
+```
+
+- Hoặc khởi tạo bất đồng bộ, ví dụ sử dụng `ConfigService`:
+
+```ts filename="src/app.module.ts"
+import { Module } from '@nestjs/common';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { VnpayModule } from 'nestjs-vnpay';
+import { ignoreLogger } from 'vnpay';
+
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+
+@Module({
+    imports: [
+        ConfigModule.forRoot({
+            envFilePath: '.env',
+        }),
+        VnpayModule.registerAsync({
+            imports: [ConfigModule],
+            useFactory: async (configService: ConfigService) => ({
+                secureSecret: configService.getOrThrow<string>('VNPAY_SECURE_SECRET'),
+                tmnCode: configService.getOrThrow<string>('VNPAY_TMN_CODE'),
+                loggerFn: ignoreLogger,
+            }),
+            inject: [ConfigService],
+        }),
+    ],
+    controllers: [AppController],
+    providers: [AppService],
 })
 export class AppModule {}
 ```
