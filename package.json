@@ -42,7 +42,7 @@
     "license": "MIT",
     "peerDependencies": {
         "@nestjs/common": "^8.0.0 || ^9.0.0 || ^10.0.0",
-        "vnpay": "^1.5.4"
+        "vnpay": "^1.0.0"
     },
     "devDependencies": {
         "@biomejs/biome": "^1.8.3",
