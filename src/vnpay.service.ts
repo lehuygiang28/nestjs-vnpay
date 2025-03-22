@@ -35,6 +35,10 @@ export class VnpayService {
      *
      * @en Get raw vnpay instance
      * @returns {VNPay} The raw vnpay instance
+     *
+     * @example
+     * const bankList = await this.vnpayService.instance.getBankList();
+     * console.log(bankList);
      */
     public get instance(): VNPay {
         return this.vnpay;
