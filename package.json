@@ -6,7 +6,7 @@
     },
     "homepage": "https://vnpay.js.org",
     "version": "0.1.0",
-    "description": "VNPay utilities module based on the vnpay package",
+    "description": "NestJS module wrapper for VNPay payment gateway integration based on the vnpay package",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
     "files": ["lib"],

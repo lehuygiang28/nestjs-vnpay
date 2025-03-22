@@ -1,55 +1,43 @@
-# nestjs-vnpay
+<div align="center">
 
-<div style="text-align: center;">
-    <h5>
-        <a href="./README.md">VI</a>
-        |
-        <a href="./README_en-US.md">EN</a>
-    </h5>
+# 📦 nestjs-vnpay
+
+[🇻🇳 Tiếng Việt](./README.md) | [🇺🇸 English](./README_en-US.md)
+
+[![NPM Version](https://img.shields.io/npm/v/nestjs-vnpay)](https://www.npmjs.com/package/nestjs-vnpay)
+[![Package License](https://img.shields.io/npm/l/nestjs-vnpay)](https://www.npmjs.com/package/nestjs-vnpay)
+[![NPM Downloads](https://img.shields.io/npm/d18m/nestjs-vnpay)](https://www.npmjs.com/package/nestjs-vnpay)
+
+**Module tích hợp cổng thanh toán [VNPay](https://vnpay.vn) cho NestJS, dựa trên gói [vnpay](https://www.npmjs.com/package/vnpay)**
+
 </div>
-<br/>
 
-<p align="center">
-    <a href="https://www.npmjs.com/package/nestjs-vnpay" target="_blank"><img src="https://img.shields.io/npm/v/nestjs-vnpay" alt="NPM Version" /></a>
-    <a href="https://www.npmjs.com/package/nestjs-vnpay" target="_blank"><img src="https://img.shields.io/npm/l/nestjs-vnpay" alt="Package License"><a>
-    <a href="https://www.npmjs.com/package/nestjs-vnpay" target="_blank"><img src="https://img.shields.io/npm/d18m/nestjs-vnpay" alt="NPM Downloads"></a>
-</p>
+## 📚 Tài liệu
 
-<strong>VNPay utilities module based on the [vnpay](https://www.npmjs.com/package/vnpay) package</strong>
+**Nguồn tài liệu hữu ích:**
+- [vnpay.js.org](https://vnpay.js.org/) - Tài liệu chi tiết của thư viện
+- [sandbox.vnpayment.vn/apis](https://sandbox.vnpayment.vn/apis) - Tài liệu tích hợp chính thức từ VNPay
 
-## Tài liệu
-
-### Tài liệu của thư viện: [vnpay.js.org](https://vnpay.js.org/)
-
-### Tài liệu từ VNPay: [sandbox.vnpayment.vn/apis](https://sandbox.vnpayment.vn/apis)
-
-## Cài đặt
-
-Cài đặt `nestjs-vnpay` với `npm`:
+## 🚀 Cài đặt
 
 ```bash
-$ npm install nestjs-vnpay vnpay
+# NPM
+npm install nestjs-vnpay vnpay
+
+# Yarn
+yarn add nestjs-vnpay vnpay
+
+# PNPM
+pnpm install nestjs-vnpay vnpay
 ```
 
-Cài đặt `nestjs-vnpay` với `yarn`:
-
-```bash
-$ yarn add nestjs-vnpay vnpay
-```
-
-Cài đặt `nestjs-vnpay` với `pnpm`:
-
-```bash
-$ pnpm install nestjs-vnpay vnpay
-```
-
-## Sử dụng
+## 💡 Sử dụng
 
 ### Khởi tạo VnpayModule
 
-- Khởi tạo đồng bộ:
+#### Khởi tạo đồng bộ:
 
-```ts filename="src/app.module.ts"
+```ts
 import { Module } from '@nestjs/common';
 import { VnpayModule } from 'nestjs-vnpay';
 import { ignoreLogger } from 'vnpay';
@@ -63,23 +51,12 @@ import { AppService } from './app.service';
         tmnCode: 'YOUR_TMN_CODE',
         secureSecret: 'YOUR_SECURE_SECRET',
         vnpayHost: 'https://sandbox.vnpayment.vn',
-        testMode: true, // tùy chọn, ghi đè vnpayHost thành sandbox nếu là true
-        hashAlgorithm: 'SHA512', // tùy chọn
 
-        /**
-         * Sử dụng enableLog để bật/tắt logger
-         * Nếu enableLog là false, loggerFn sẽ không được sử dụng trong bất kỳ phương thức nào
-         */
-        enableLog: true, // tùy chọn
-
-        /**
-         * Hàm `loggerFn` sẽ được gọi để ghi log
-         * Mặc định, loggerFn sẽ ghi log ra console
-         * Bạn có thể ghi đè loggerFn để ghi log ra nơi khác
-         *
-         * `ignoreLogger` là một hàm không làm gì cả
-         */
-        loggerFn: ignoreLogger, // tùy chọn
+        // Cấu hình tùy chọn
+        testMode: true,                // Chế độ test (ghi đè vnpayHost thành sandbox nếu là true)
+        hashAlgorithm: 'SHA512',       // Thuật toán mã hóa
+        enableLog: true,               // Bật/tắt ghi log
+        loggerFn: ignoreLogger,        // Hàm xử lý log tùy chỉnh
     })
   ],
   controllers: [AppController],
@@ -88,9 +65,9 @@ import { AppService } from './app.service';
 export class AppModule {}
 ```
 
-- Hoặc khởi tạo bất đồng bộ, ví dụ sử dụng `ConfigService`:
+#### Khởi tạo bất đồng bộ (với ConfigService):
 
-```ts filename="src/app.module.ts"
+```ts
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { VnpayModule } from 'nestjs-vnpay';
@@ -122,7 +99,7 @@ export class AppModule {}
 
 ### Sử dụng trong service
 
-```ts filename="src/app.service.ts"
+```ts
 import { Injectable } from '@nestjs/common';
 import { VnpayService } from 'nestjs-vnpay';
 
@@ -134,14 +111,18 @@ export class AppService {
     return this.vnpayService.getBankList();
   }
 
-  /* ... */
+  /* ... các phương thức khác ... */
 }
 ```
 
-## 🙌 Đóng góp
+## 🤝 Hỗ trợ & Đóng góp
 
-Các đóng góp luôn được đón nhận! Hãy tạo một issue hoặc pull request nếu bạn có bất kỳ đề xuất, cải thiện hoặc câu hỏi nào.
+**nestjs-vnpay là một dự án mã nguồn mở**
 
-## Giấy phép
+Nếu bạn thấy thư viện hữu ích:
+- Tặng sao ⭐️ trên [GitHub](https://github.com/lehuygiang28/nestjs-vnpay)
+- Các đóng góp luôn được đón nhận! Hãy tạo một issue hoặc pull request nếu bạn có bất kỳ đề xuất, cải thiện hoặc câu hỏi nào.
 
-**[MIT](LICENSE) © [Lê Huy Giang](https://github.com/lehuygiang28)**
+## 📄 Giấy phép
+
+[MIT](LICENSE) © [Lê Huy Giang](https://github.com/lehuygiang28)
