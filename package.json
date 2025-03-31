@@ -12,9 +12,7 @@
     "files": ["lib"],
     "scripts": {
         "build": "rimraf ./lib && tsc -p tsconfig.json",
-        "prepare": "npm run build",
-        "postinstall": "npm run format:fix",
-        "postuninstall": "npm run format:fix",
+        "prepublishOnly": "npm run build",
         "test": "jest",
         "test:cov": "jest --coverage",
         "example": "npx ts-node example/index.ts",
