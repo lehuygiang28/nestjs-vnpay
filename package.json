@@ -5,7 +5,7 @@
         "url": "git+https://github.com/lehuygiang28/nestjs-vnpay.git"
     },
     "homepage": "https://vnpay.js.org",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "NestJS module wrapper for VNPay payment gateway integration based on the vnpay package",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
