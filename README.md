@@ -14,9 +14,12 @@
 
 <!-- GitAds-Verify: G6Y23DNO4SZ4UC3EG8RGGYAA8NKIVHBR -->
 
+[![Sponsored by GitAds](https://gitads.dev/v1/ad-serve?source=lehuygiang28/nestjs-vnpay@github)](https://gitads.dev/v1/ad-track?source=lehuygiang28/nestjs-vnpay@github)
+
 ## 📚 Tài liệu
 
 **Nguồn tài liệu hữu ích:**
+
 - [vnpay.js.org](https://vnpay.js.org/) - Tài liệu chi tiết của thư viện
 - [sandbox.vnpayment.vn/apis](https://sandbox.vnpayment.vn/apis) - Tài liệu tích hợp chính thức từ VNPay
 
@@ -37,7 +40,7 @@ pnpm install nestjs-vnpay vnpay
 
 ### Khởi tạo VnpayModule
 
-#### Khởi tạo đồng bộ:
+#### Khởi tạo đồng bộ
 
 ```ts
 import { Module } from '@nestjs/common';
@@ -67,7 +70,7 @@ import { AppService } from './app.service';
 export class AppModule {}
 ```
 
-#### Khởi tạo bất đồng bộ (với ConfigService):
+#### Khởi tạo bất đồng bộ (với ConfigService)
 
 ```ts
 import { Module } from '@nestjs/common';
@@ -122,6 +125,7 @@ export class AppService {
 **nestjs-vnpay là một dự án mã nguồn mở**
 
 Nếu bạn thấy thư viện hữu ích:
+
 - Tặng sao ⭐️ trên [GitHub](https://github.com/lehuygiang28/nestjs-vnpay)
 - Các đóng góp luôn được đón nhận! Hãy tạo một issue hoặc pull request nếu bạn có bất kỳ đề xuất, cải thiện hoặc câu hỏi nào.
 

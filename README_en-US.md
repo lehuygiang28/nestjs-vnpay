@@ -12,9 +12,12 @@
 
 </div>
 
+[![Sponsored by GitAds](https://gitads.dev/v1/ad-serve?source=lehuygiang28/nestjs-vnpay@github)](https://gitads.dev/v1/ad-track?source=lehuygiang28/nestjs-vnpay@github)
+
 ## 📚 Documentation
 
 **Useful resources:**
+
 - [vnpay.js.org](https://vnpay.js.org/) - Detailed library documentation
 - [sandbox.vnpayment.vn/apis](https://sandbox.vnpayment.vn/apis) - Official VNPay integration documentation
 
@@ -35,7 +38,7 @@ pnpm install nestjs-vnpay vnpay
 
 ### Register VnpayModule
 
-#### Synchronous registration:
+#### Synchronous registration
 
 ```ts
 import { Module } from '@nestjs/common';
@@ -65,7 +68,7 @@ import { AppService } from './app.service';
 export class AppModule {}
 ```
 
-#### Asynchronous registration (with ConfigService):
+#### Asynchronous registration (with ConfigService)
 
 ```ts
 import { Module } from '@nestjs/common';
@@ -120,6 +123,7 @@ export class AppService {
 **nestjs-vnpay is an open-source project**
 
 If you find this library useful:
+
 - Star ⭐️ the [GitHub repository](https://github.com/lehuygiang28/nestjs-vnpay)
 - Contributions are always welcome! Please create an issue or pull request if you have any suggestions, improvements, or questions.
 
