@@ -15,10 +15,10 @@ jobs:
             - name: Checkout code
               uses: actions/checkout@v4
 
-            - name: Use Node.js 20
+            - name: Use Node.js 18.x
               uses: actions/setup-node@v4
               with:
-                  node-version: 20
+                  node-version: 18
                   registry-url: 'https://registry.npmjs.com'
 
             - name: 'Install dependencies'
@@ -30,7 +30,16 @@ jobs:
             - name: 'Build'
               run: npm run build
 
+            - name: Get npm tag
+              id: npm-tag
+              run: |
+                if [ "${{ github.event.release.prerelease }}" = "true" ]; then
+                  echo "tag=next" >> $GITHUB_OUTPUT
+                else
+                  echo "tag=latest" >> $GITHUB_OUTPUT
+                fi
+
             - name: 'Publish'
-              run: npm publish --provenance
+              run: npm publish --provenance --tag ${{ steps.npm-tag.outputs.tag }}
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

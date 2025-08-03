@@ -1,0 +1,8 @@
+.git/**
+node_modules/**
+dist/**
+lib/**
+coverage/**
+build/**
+.DS_Store
+*.md
