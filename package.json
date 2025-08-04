@@ -9,6 +9,12 @@
     "description": "NestJS module wrapper for VNPay payment gateway integration based on the vnpay package",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./lib/index.d.ts",
+            "default": "./lib/index.js"
+        }
+    },
     "files": [
         "lib"
     ],
@@ -42,7 +48,7 @@
     "license": "MIT",
     "peerDependencies": {
         "@nestjs/common": "^8.0.0 || ^9.0.0 || ^10.0.0 || ^11.0.0",
-        "vnpay": "^1.0.0 || ^2.1.1"
+        "vnpay": "^1.0.0 || ^2.1.1 || ^2.4.1"
     },
     "devDependencies": {
         "@nestjs/common": "^10.3.10",
