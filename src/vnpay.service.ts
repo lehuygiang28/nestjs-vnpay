@@ -4,6 +4,7 @@ import { VNPay } from 'vnpay';
 import type {
     Bank,
     BuildPaymentUrl,
+    GenerateQrResponse,
     QueryDr,
     QueryDrResponse,
     Refund,
@@ -14,6 +15,7 @@ import type {
 
 import type {
     BuildPaymentUrlOptions,
+    GenerateQrOptions,
     QueryDrOptions,
     RefundOptions,
     VerifyIpnCallOptions,
@@ -64,6 +66,21 @@ export class VnpayService {
      */
     buildPaymentUrl(data: BuildPaymentUrl, options?: BuildPaymentUrlOptions): string {
         return this.vnpay.buildPaymentUrl(data, options);
+    }
+
+    /**
+     * Phương thức tạo QR thanh toán VNPay (QR Pay).
+     * @en Build VNPay payment QR (QR Pay).
+     *
+     * @param {BuildPaymentUrl} data - Dữ liệu thanh toán (cùng payload cơ bản với buildPaymentUrl)
+     * @param {GenerateQrOptions} options - Tùy chọn (logger, ...)
+     * @returns {Promise<GenerateQrResponse>} Mã phản hồi, thông báo và nội dung chuỗi QR
+     */
+    async generateQr(
+        data: BuildPaymentUrl,
+        options?: GenerateQrOptions,
+    ): Promise<GenerateQrResponse> {
+        return this.vnpay.generateQr(data, options);
     }
 
     /**
