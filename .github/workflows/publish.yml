@@ -6,7 +6,7 @@ on:
 
 permissions:
     contents: read
-    id-token: write
+    id-token: write # Required for OIDC
 
 jobs:
     build:
@@ -14,13 +14,13 @@ jobs:
 
         steps:
             - name: Checkout code
-              uses: actions/checkout@v4
+              uses: actions/checkout@v6
 
-            - name: Use Node.js 20.x
-              uses: actions/setup-node@v4
+            - name: Use Node.js 24.x
+              uses: actions/setup-node@v6
               with:
-                  node-version: 20
-                  registry-url: 'https://registry.npmjs.org/'
+                  node-version: 24
+                  registry-url: 'https://registry.npmjs.org'
 
             - name: 'Install dependencies'
               run: npm ci
@@ -46,5 +46,3 @@ jobs:
 
             - name: 'Publish'
               run: npm publish --provenance --tag ${{ steps.npm-tag.outputs.tag }}
-              env:
-                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
